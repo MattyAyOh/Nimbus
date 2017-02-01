@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B2655CA1E418CDC00888C26 /* LobbyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2655C91E418CDC00888C26 /* LobbyHandler.swift */; };
+		9B2655CA1E418CDC00888C26 /* CloudHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2655C91E418CDC00888C26 /* CloudHandler.swift */; };
+		9B8ACF7C1E42A6790029931C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8ACF7B1E42A6790029931C /* CloudKit.framework */; };
 		9BA869E11E40281300A02357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E01E40281300A02357 /* AppDelegate.swift */; };
 		9BA869E31E40281300A02357 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E21E40281300A02357 /* FirstViewController.swift */; };
 		9BA869E51E40281300A02357 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E41E40281300A02357 /* SecondViewController.swift */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B2655C91E418CDC00888C26 /* LobbyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyHandler.swift; sourceTree = "<group>"; };
+		9B2655C91E418CDC00888C26 /* CloudHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudHandler.swift; sourceTree = "<group>"; };
+		9B8ACF7B1E42A6790029931C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		9BA869DD1E40281300A02357 /* Nimbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nimbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA869E01E40281300A02357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BA869E21E40281300A02357 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -33,17 +35,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8ACF7C1E42A6790029931C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B8ACF7A1E42A6780029931C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B8ACF7B1E42A6790029931C /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9BA869D41E40281300A02357 = {
 			isa = PBXGroup;
 			children = (
 				9BA869DF1E40281300A02357 /* Nimbus */,
 				9BA869DE1E40281300A02357 /* Products */,
+				9B8ACF7A1E42A6780029931C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				9BA869E01E40281300A02357 /* AppDelegate.swift */,
-				9B2655C91E418CDC00888C26 /* LobbyHandler.swift */,
+				9B2655C91E418CDC00888C26 /* CloudHandler.swift */,
 				9BA869E21E40281300A02357 /* FirstViewController.swift */,
 				9BA869E41E40281300A02357 /* SecondViewController.swift */,
 				9BA869E61E40281300A02357 /* Main.storyboard */,
@@ -102,6 +114,7 @@
 				TargetAttributes = {
 					9BA869DC1E40281300A02357 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -144,7 +157,7 @@
 				9BA869E51E40281300A02357 /* SecondViewController.swift in Sources */,
 				9BA869E11E40281300A02357 /* AppDelegate.swift in Sources */,
 				9BA869E31E40281300A02357 /* FirstViewController.swift in Sources */,
-				9B2655CA1E418CDC00888C26 /* LobbyHandler.swift in Sources */,
+				9B2655CA1E418CDC00888C26 /* CloudHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -244,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -259,6 +272,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bt.Nimbus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -270,6 +284,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bt.Nimbus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

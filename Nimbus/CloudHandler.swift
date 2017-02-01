@@ -9,13 +9,12 @@
 import Foundation
 import CloudKit
 
-class LobbyHandler {
+class CloudHandler {
     
     var subscriptionIslocallyCached = false
     
     func loginToICloud() {
         if (subscriptionIslocallyCached) {return}
         
-
     }
 }
