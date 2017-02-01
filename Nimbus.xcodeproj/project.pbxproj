@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B2655CA1E418CDC00888C26 /* LobbyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2655C91E418CDC00888C26 /* LobbyHandler.swift */; };
 		9BA869E11E40281300A02357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E01E40281300A02357 /* AppDelegate.swift */; };
 		9BA869E31E40281300A02357 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E21E40281300A02357 /* FirstViewController.swift */; };
 		9BA869E51E40281300A02357 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E41E40281300A02357 /* SecondViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B2655C91E418CDC00888C26 /* LobbyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyHandler.swift; sourceTree = "<group>"; };
 		9BA869DD1E40281300A02357 /* Nimbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nimbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA869E01E40281300A02357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BA869E21E40281300A02357 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				9BA869E01E40281300A02357 /* AppDelegate.swift */,
+				9B2655C91E418CDC00888C26 /* LobbyHandler.swift */,
 				9BA869E21E40281300A02357 /* FirstViewController.swift */,
 				9BA869E41E40281300A02357 /* SecondViewController.swift */,
 				9BA869E61E40281300A02357 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 				9BA869E51E40281300A02357 /* SecondViewController.swift in Sources */,
 				9BA869E11E40281300A02357 /* AppDelegate.swift in Sources */,
 				9BA869E31E40281300A02357 /* FirstViewController.swift in Sources */,
+				9B2655CA1E418CDC00888C26 /* LobbyHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +292,7 @@
 				9BA869F31E40281300A02357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
