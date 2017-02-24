@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B2655CA1E418CDC00888C26 /* CloudHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2655C91E418CDC00888C26 /* CloudHandler.swift */; };
+		9B30ED801E4A855900EFDB60 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B30ED7F1E4A855900EFDB60 /* CloudKit.framework */; };
+		9B5076981E5361A400E31334 /* LobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5076961E5361A400E31334 /* LobbyTableViewCell.swift */; };
+		9B5076991E5361A400E31334 /* LobbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B5076971E5361A400E31334 /* LobbyTableViewCell.xib */; };
+		9B50769B1E539B6B00E31334 /* UserDefaultsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50769A1E539B6B00E31334 /* UserDefaultsHandler.swift */; };
+		9B5076A01E58C4BF00E31334 /* CreateLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50769F1E58C4BF00E31334 /* CreateLobbyViewController.swift */; };
+		9B5076A21E58F2BD00E31334 /* PickerArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5076A11E58F2BD00E31334 /* PickerArrayController.swift */; };
+		9B7A152E1E5D2EA200ED8699 /* AllLobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A152D1E5D2EA200ED8699 /* AllLobbiesViewController.swift */; };
+		9B7A15301E5D2F0F00ED8699 /* MyLobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A152F1E5D2F0F00ED8699 /* MyLobbiesViewController.swift */; };
+		9BA869E11E40281300A02357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E01E40281300A02357 /* AppDelegate.swift */; };
+		9BA869E31E40281300A02357 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA869E21E40281300A02357 /* LobbyViewController.swift */; };
+		9BA869E81E40281300A02357 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA869E61E40281300A02357 /* Main.storyboard */; };
+		9BA869EA1E40281300A02357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BA869E91E40281300A02357 /* Assets.xcassets */; };
+		9BA869ED1E40281300A02357 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA869EB1E40281300A02357 /* LaunchScreen.storyboard */; };
+		9BAE06661E42B7A300931F66 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAE06651E42B7A300931F66 /* Lobby.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9B2655C91E418CDC00888C26 /* CloudHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudHandler.swift; sourceTree = "<group>"; };
+		9B30ED7F1E4A855900EFDB60 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		9B5076961E5361A400E31334 /* LobbyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyTableViewCell.swift; sourceTree = "<group>"; };
+		9B5076971E5361A400E31334 /* LobbyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LobbyTableViewCell.xib; sourceTree = "<group>"; };
+		9B50769A1E539B6B00E31334 /* UserDefaultsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHandler.swift; sourceTree = "<group>"; };
+		9B50769F1E58C4BF00E31334 /* CreateLobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLobbyViewController.swift; sourceTree = "<group>"; };
+		9B5076A11E58F2BD00E31334 /* PickerArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerArrayController.swift; sourceTree = "<group>"; };
+		9B7A152D1E5D2EA200ED8699 /* AllLobbiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLobbiesViewController.swift; sourceTree = "<group>"; };
+		9B7A152F1E5D2F0F00ED8699 /* MyLobbiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLobbiesViewController.swift; sourceTree = "<group>"; };
+		9B8ACF7D1E42AA200029931C /* Nimbus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nimbus.entitlements; sourceTree = "<group>"; };
+		9BA869DD1E40281300A02357 /* Nimbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nimbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BA869E01E40281300A02357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9BA869E21E40281300A02357 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		9BA869E71E40281300A02357 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9BA869E91E40281300A02357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9BA869EC1E40281300A02357 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9BA869EE1E40281300A02357 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BAE06651E42B7A300931F66 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9BA869DA1E40281300A02357 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B30ED801E4A855900EFDB60 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B30ED7E1E4A855900EFDB60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B30ED7F1E4A855900EFDB60 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B50769C1E539FB200E31334 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				9BAE06651E42B7A300931F66 /* Lobby.swift */,
+				9B2655C91E418CDC00888C26 /* CloudHandler.swift */,
+			);
+			name = Cloud;
+			sourceTree = "<group>";
+		};
+		9B50769D1E539FBF00E31334 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B50769F1E58C4BF00E31334 /* CreateLobbyViewController.swift */,
+				9BA869E21E40281300A02357 /* LobbyViewController.swift */,
+				9BA869E61E40281300A02357 /* Main.storyboard */,
+				9B7A152F1E5D2F0F00ED8699 /* MyLobbiesViewController.swift */,
+				9B7A152D1E5D2EA200ED8699 /* AllLobbiesViewController.swift */,
+				9B5076A11E58F2BD00E31334 /* PickerArrayController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9B50769E1E539FC400E31334 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				9B5076961E5361A400E31334 /* LobbyTableViewCell.swift */,
+				9B5076971E5361A400E31334 /* LobbyTableViewCell.xib */,
+			);
+			name = TableViews;
+			sourceTree = "<group>";
+		};
+		9BA869D41E40281300A02357 = {
+			isa = PBXGroup;
+			children = (
+				9BA869DF1E40281300A02357 /* Nimbus */,
+				9BA869DE1E40281300A02357 /* Products */,
+				9B30ED7E1E4A855900EFDB60 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9BA869DE1E40281300A02357 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BA869DD1E40281300A02357 /* Nimbus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BA869DF1E40281300A02357 /* Nimbus */ = {
+			isa = PBXGroup;
+			children = (
+				9B8ACF7D1E42AA200029931C /* Nimbus.entitlements */,
+				9BA869EE1E40281300A02357 /* Info.plist */,
+				9BA869E01E40281300A02357 /* AppDelegate.swift */,
+				9B50769A1E539B6B00E31334 /* UserDefaultsHandler.swift */,
+				9BA869E91E40281300A02357 /* Assets.xcassets */,
+				9B50769C1E539FB200E31334 /* Cloud */,
+				9BA869EB1E40281300A02357 /* LaunchScreen.storyboard */,
+				9B50769E1E539FC400E31334 /* TableViews */,
+				9B50769D1E539FBF00E31334 /* ViewControllers */,
+			);
+			path = Nimbus;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9BA869DC1E40281300A02357 /* Nimbus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BA869F11E40281300A02357 /* Build configuration list for PBXNativeTarget "Nimbus" */;
+			buildPhases = (
+				9BA869D91E40281300A02357 /* Sources */,
+				9BA869DA1E40281300A02357 /* Frameworks */,
+				9BA869DB1E40281300A02357 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nimbus;
+			productName = Nimbus;
+			productReference = 9BA869DD1E40281300A02357 /* Nimbus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9BA869D51E40281300A02357 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Michael Anderson";
+				TargetAttributes = {
+					9BA869DC1E40281300A02357 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = UM9YJ48CFT;
+						LastSwiftMigration = 0820;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 9BA869D81E40281300A02357 /* Build configuration list for PBXProject "Nimbus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9BA869D41E40281300A02357;
+			productRefGroup = 9BA869DE1E40281300A02357 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9BA869DC1E40281300A02357 /* Nimbus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9BA869DB1E40281300A02357 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BA869ED1E40281300A02357 /* LaunchScreen.storyboard in Resources */,
+				9BA869EA1E40281300A02357 /* Assets.xcassets in Resources */,
+				9B5076991E5361A400E31334 /* LobbyTableViewCell.xib in Resources */,
+				9BA869E81E40281300A02357 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9BA869D91E40281300A02357 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B7A15301E5D2F0F00ED8699 /* MyLobbiesViewController.swift in Sources */,
+				9B5076981E5361A400E31334 /* LobbyTableViewCell.swift in Sources */,
+				9B7A152E1E5D2EA200ED8699 /* AllLobbiesViewController.swift in Sources */,
+				9BAE06661E42B7A300931F66 /* Lobby.swift in Sources */,
+				9B50769B1E539B6B00E31334 /* UserDefaultsHandler.swift in Sources */,
+				9BA869E11E40281300A02357 /* AppDelegate.swift in Sources */,
+				9B5076A01E58C4BF00E31334 /* CreateLobbyViewController.swift in Sources */,
+				9BA869E31E40281300A02357 /* LobbyViewController.swift in Sources */,
+				9B5076A21E58F2BD00E31334 /* PickerArrayController.swift in Sources */,
+				9B2655CA1E418CDC00888C26 /* CloudHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9BA869E61E40281300A02357 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BA869E71E40281300A02357 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9BA869EB1E40281300A02357 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BA869EC1E40281300A02357 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9BA869EF1E40281300A02357 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9BA869F01E40281300A02357 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9BA869F21E40281300A02357 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Nimbus/Nimbus.entitlements;
+				DEVELOPMENT_TEAM = UM9YJ48CFT;
+				INFOPLIST_FILE = Nimbus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bt.Nimbus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9BA869F31E40281300A02357 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Nimbus/Nimbus.entitlements;
+				DEVELOPMENT_TEAM = UM9YJ48CFT;
+				INFOPLIST_FILE = Nimbus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bt.Nimbus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9BA869D81E40281300A02357 /* Build configuration list for PBXProject "Nimbus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BA869EF1E40281300A02357 /* Debug */,
+				9BA869F01E40281300A02357 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BA869F11E40281300A02357 /* Build configuration list for PBXNativeTarget "Nimbus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BA869F21E40281300A02357 /* Debug */,
+				9BA869F31E40281300A02357 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9BA869D51E40281300A02357 /* Project object */;
+}
