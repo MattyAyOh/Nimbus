@@ -15,6 +15,8 @@ public let lobbyType = "Lobby"
 class CloudHandler {
     
     let publicDB = CKContainer.default().publicCloudDatabase
+    
+    var cachedLobbies: [Lobby]? = nil
     var subscriptionIslocallyCached = false
     
     static let shared: CloudHandler = {
@@ -34,7 +36,7 @@ class CloudHandler {
         let operation = CKModifySubscriptionsOperation(subscriptionsToSave: [sub], subscriptionIDsToDelete: [])
         operation.modifySubscriptionsCompletionBlock = { savedSubscriptions, deletedSubscriptionIDs, error in
             if error != nil {
-                print (error)
+                print (error ?? "Erorr!")
             } else {
                 self.subscriptionIslocallyCached = true
                 UIApplication.shared.registerForRemoteNotifications()
@@ -68,6 +70,7 @@ class CloudHandler {
 
         publicDB.save(record) { (savedRecord, error) in
             DispatchQueue.main.async {
+                self.cachedLobbies?.append(lobby)
                 completion(record, error)
             }
         }
@@ -96,6 +99,9 @@ class CloudHandler {
         
         publicDB.delete(withRecordID: record.recordID) { (recordID, error) in
             print("Deleted record ids \(recordID) with error \(error)")
+            if let index = self.cachedLobbies?.index(of: lobby) {
+                self.cachedLobbies?.remove(at: index)
+            }
             if error != nil {
                 
             }
@@ -110,9 +116,24 @@ class CloudHandler {
         let query = CKQuery(recordType: lobbyType, predicate: predicate)
         
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
-            let lobbies = records?.map(Lobby.init)
+            self.cachedLobbies = records?.map(Lobby.init)
+            
             DispatchQueue.main.async {
-                completion(lobbies, error)
+                completion(self.cachedLobbies, error)
+            }
+        }
+    }
+    
+    static func checkLoginStatus(_ handler: @escaping (_ islogged: Bool) -> Void) {
+        CKContainer.default().accountStatus{ accountStatus, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            switch accountStatus {
+            case .available:
+                handler(true)
+            default:
+                handler(false)
             }
         }
     }
