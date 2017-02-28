@@ -55,7 +55,7 @@ class LobbyTableViewCell: UITableViewCell {
             string.append(playerName)
 
             if playerName != lobby.playerList.last {
-                string.append(", ")
+                string.append("\n")
             }
         }
         
