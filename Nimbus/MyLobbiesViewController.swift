@@ -19,12 +19,9 @@ class MyLobbiesViewController: LobbyViewController {
     }
     
     override func displayLobbies(_ lobbies: [Lobby]) {
-        guard let nickname = UserDefaultsHandler.userNickname() else {
-            return
-        }
         
         var filtered = lobbies.filter { (lobby) -> Bool in
-            if lobby.playerList.contains(nickname) {
+            if lobby.playerIDs.contains(UserDefaultsHandler.uniqueID()) {
                 return true
             }
             return false

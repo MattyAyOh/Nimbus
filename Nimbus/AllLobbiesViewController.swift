@@ -18,30 +18,35 @@ enum LobbySorting: Int {
 }
 
 
+let sortTitles = ["Name ↑", "Name ↓", "Date ↑", "Date ↓", "Open Spots ↑", "Open Spots ↓"]
+
+
 class AllLobbiesViewController: LobbyViewController {
     
     var currentSort: LobbySorting = .DateFirst
     var previousSortIndex: Int = 0
-    
-    @IBOutlet weak var sortControl: UISegmentedControl!
+    var sortPicker: PickerArrayController?
+    var moneyFilter: Bool = false
+    var smokingFilter: Bool = false
+    var gameType1Filter: Bool = false
+    var gameType2Filter: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sortControl.selectedSegmentIndex = currentSort.rawValue / 2
+    
     }
     
     override func displayLobbies(_ lobbies: [Lobby]) {
-        guard let nickname = UserDefaultsHandler.userNickname() else {
-            return
-        }
-        
         var filtered = lobbies.filter { (lobby) -> Bool in
-            if !lobby.playerList.contains(nickname) && lobby.startTime > Date() {
+            if !lobby.playerIDs.contains(UserDefaultsHandler.uniqueID()) && lobby.startTime > Date() {
                 return true
             }
             return false
         }
+        
+        filtered = filtered.filter({ (lobby) -> Bool in
+            return filterByCurrentFilter(lobby)
+        })
         
         filtered = filtered.sorted { (first, second) -> Bool in
             if sortByCurrentSort(first, second) {
@@ -53,6 +58,27 @@ class AllLobbiesViewController: LobbyViewController {
         self.lobbies = filtered
         self.lobbyTableView.reloadData()
         self.refresh.endRefreshing()
+    }
+    
+    func filterByCurrentFilter(_ lobby: Lobby) -> Bool {
+        
+        if moneyFilter && !lobby.smoking {
+            return false
+        }
+        
+        if smokingFilter && !lobby.smoking {
+            return false
+        }
+        
+        if gameType1Filter && lobby.gameType != .川麻 {
+            return false
+        }
+        
+        if gameType2Filter && lobby.gameType != .普通 {
+            return false
+        }
+        
+        return true
     }
     
     func sortByCurrentSort(_ first: Lobby, _ second: Lobby) -> Bool {
@@ -68,13 +94,13 @@ class AllLobbiesViewController: LobbyViewController {
         case .NameA:
             if let firstGame = first.gameName,
                 let secondGame = second.gameName {
-                sorted = firstGame > secondGame
+                sorted = secondGame > firstGame
             }
             break
         case .NameZ:
             if let firstGame = first.gameName,
                 let secondGame = second.gameName {
-                sorted = secondGame > firstGame
+                sorted = firstGame > secondGame
             }
             break
         case .Spots1:
@@ -88,36 +114,65 @@ class AllLobbiesViewController: LobbyViewController {
         return sorted
     }
     
-    @IBAction func sortControlChanged(_ sender: UISegmentedControl) {
-        let index = sender.selectedSegmentIndex
-        
-        if index == previousSortIndex {
-            if index == 0 {
-                currentSort = .NameA
-            } else if index == 1 {
-                currentSort = .DateFirst
-            } else if index == 2 {
-                currentSort = .Spots1
-            }
+    @IBAction func nameSort(_ sender: Any) {
+        if currentSort == .NameA {
+            currentSort = .NameZ
+        } else {
+            currentSort = .NameA
         }
-        else {
-            if index == 0 {
-                currentSort = .NameZ
-            } else if index == 1 {
-                currentSort = .DateLast
-            } else if index == 2 {
-                currentSort = .Spots3
-            }
+        refreshLobbies()
+    }
+    
+    
+    @IBAction func dateSort(_ sender: Any) {
+        if currentSort == .DateFirst {
+            currentSort = .DateLast
+        } else {
+            currentSort = .DateFirst
         }
+        refreshLobbies()
+    }
+    
+    @IBAction func openSlotsSort(_ sender: Any) {
+        if currentSort == .Spots1 {
+            currentSort = .Spots3
+        } else {
+            currentSort = .Spots1
+        }
+        refreshLobbies()
+    }
+    
+    @IBAction func moneyFilterPressed(_ sender: Any) {
+        moneyFilter = !moneyFilter
         
-        previousSortIndex = index
+        refreshLobbies()
+    }
+    
+    @IBAction func smokingFilterPressed(_ sender: Any) {
+        smokingFilter = !smokingFilter
         
+        refreshLobbies()
+    }
+    
+    @IBAction func type1Pressed(_ sender: Any) {
+        gameType1Filter = !gameType1Filter
+        
+        refreshLobbies()
+    }
+
+    @IBAction func type2Pressed(_ sender: Any) {
+        gameType2Filter = !gameType2Filter
+        
+        refreshLobbies()
+    }
+    
+    func refreshLobbies() {
         if let lobbies = CloudHandler.shared.cachedLobbies {
             displayLobbies(lobbies)
         } else {
             fetchAllLobbies()
         }
-        
     }
+
     
 }

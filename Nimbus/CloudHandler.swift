@@ -62,6 +62,17 @@ class CloudHandler {
 //        }
     }
     
+    func isICloudContainerAvailable(completion: @escaping (_ signedIn: Bool) -> Void) {
+        CKContainer.default().accountStatus { (accountStatus, error) in
+            if (accountStatus == .available) {
+                completion(true)
+            }
+            else {
+                completion(false)
+            }
+        }
+    }
+    
     func createLobby(_ lobby: Lobby, completion: @escaping (_ record: CKRecord?, _ error: Error?) -> Void) {
         guard let record = lobby.record() else {
             //
@@ -86,7 +97,9 @@ class CloudHandler {
         modifyOperation.savePolicy = .allKeys
         modifyOperation.qualityOfService = .userInitiated
         modifyOperation.perRecordCompletionBlock = { record, error in
-            completion(record, error)
+            DispatchQueue.main.async {
+                completion(record, error)
+            }
         }
         
         publicDB.add(modifyOperation)

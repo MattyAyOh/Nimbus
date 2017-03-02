@@ -19,8 +19,8 @@ class LobbyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        CloudHandler.shared.loginToICloud()
+    
+       // CloudHandler.shared.loginToICloud()
         
         //Setup Table View reusable cells
         let cellNib = UINib(nibName: LobbyTableViewCell.nibName, bundle: nil)
@@ -34,10 +34,32 @@ class LobbyViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        CloudHandler.shared.isICloudContainerAvailable { (signedIn) in
+            if !signedIn {
+                let alertController = UIAlertController(title: "iCloud Required", message: "Please Sign in to iCloud to continue.", preferredStyle: .alert)
+                
+                let settings = UIAlertAction(title: "Settings", style: .default, handler: { (action) in
+                    let settingsCloudKitUrl = URL(string:"App-Prefs:root=CASTLE")
+                    if let url = settingsCloudKitUrl {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                })
+                alertController.addAction(settings)
+                
+                self.present(alertController, animated: true, completion: {
+                    
+                })
+            }
+        }
+        
         //Prompt for nickname if one isn't created
         if UserDefaultsHandler.userNickname() == nil {
             UserDefaultsHandler.promptForUserNickname(self)
         }
+        
+        
         
         //Force a refresh
         fetchAllLobbies()
@@ -81,12 +103,18 @@ extension LobbyViewController: UITableViewDataSource {
     func deleteLobby(_ lobby: Lobby) {
         if let nickname = UserDefaultsHandler.userNickname() {
             lobby.playerList.append(nickname)
+            lobby.playerIDs.append(UserDefaultsHandler.uniqueID())
+        }
+        
+        if let index = lobbies.index(of: lobby) {
+            lobbies.remove(at: index)
+            self.lobbyTableView.reloadData()
         }
         
         CloudHandler.shared.modifyLobby(lobby) { (record, error) in
             //if let index = self.lobbies.index(of: lobby) {
                 //self.lobbies.remove(at: index)
-            print(error)
+               // print(error)
                 self.lobbyTableView.reloadData()
            // }
         }
