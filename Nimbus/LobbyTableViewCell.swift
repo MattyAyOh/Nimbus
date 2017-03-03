@@ -70,7 +70,7 @@ class LobbyTableViewCell: UITableViewCell {
     
     @IBAction func joinButtonPressed(_ sender: Any) {
         if let delegate = self.delegate, let lobby = lobby {
-            delegate.deleteLobby(lobby)
+            delegate.joinLobby(lobby)
             delegate.selectedIndexPath = nil
         }
     }

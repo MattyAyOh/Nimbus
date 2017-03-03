@@ -100,7 +100,7 @@ class LobbyViewController: UIViewController {
 // MARK: UITableViewDataSource
 extension LobbyViewController: UITableViewDataSource {
     
-    func deleteLobby(_ lobby: Lobby) {
+    func joinLobby(_ lobby: Lobby) {
         if let nickname = UserDefaultsHandler.userNickname() {
             lobby.playerList.append(nickname)
             lobby.playerIDs.append(UserDefaultsHandler.uniqueID())
@@ -112,11 +112,19 @@ extension LobbyViewController: UITableViewDataSource {
         }
         
         CloudHandler.shared.modifyLobby(lobby) { (record, error) in
-            //if let index = self.lobbies.index(of: lobby) {
-                //self.lobbies.remove(at: index)
-               // print(error)
+            if error != nil {
+                print("Join lobby error: \(error)")
+            } else {
                 self.lobbyTableView.reloadData()
-           // }
+                
+                let message = "Game Joined!"
+                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    alert.dismiss(animated: true, completion: nil)
+                })
+            }
         }
     }
     
