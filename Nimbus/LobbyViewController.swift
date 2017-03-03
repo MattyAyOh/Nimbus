@@ -12,6 +12,7 @@ import CloudKit
 class LobbyViewController: UIViewController {
 
     @IBOutlet weak var lobbyTableView: UITableView!
+    @IBOutlet weak var noGamesLabel: UILabel!
     
     let refresh = UIRefreshControl()
     var lobbies = [Lobby]()

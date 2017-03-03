@@ -36,6 +36,8 @@ class MyLobbiesViewController: LobbyViewController {
             return false
         }
         
+        noGamesLabel.isHidden = !filtered.isEmpty
+        
         self.lobbies = filtered
         self.lobbyTableView.reloadData()
         self.refresh.endRefreshing()
