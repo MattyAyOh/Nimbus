@@ -128,6 +128,44 @@ extension LobbyViewController: UITableViewDataSource {
         }
     }
     
+    func leaveLobby(_ lobby: Lobby) {
+        if let nickname = UserDefaultsHandler.userNickname() {
+            if let index = lobby.playerList.index(of: nickname) {
+                lobby.playerList.remove(at: index)
+            }
+        }
+        
+        if let index = lobby.playerIDs.index(of: UserDefaultsHandler.uniqueID()) {
+            lobby.playerIDs.remove(at: index)
+        }
+        
+        if let index = lobbies.index(of: lobby) {
+            lobbies.remove(at: index)
+            self.lobbyTableView.reloadData()
+        }
+        
+        CloudHandler.shared.modifyLobby(lobby) { (record, error) in
+            if error != nil {
+                print("Leave lobby error: \(error)")
+            } else {
+                self.lobbyTableView.reloadData()
+            }
+        }
+    }
+    
+    func deleteLobby(_ lobby: Lobby) {
+        if let index = lobbies.index(of: lobby) {
+            lobbies.remove(at: index)
+            self.lobbyTableView.reloadData()
+        }
+        
+        CloudHandler.shared.deleteLobby(lobby) { (error) in
+            if error != nil {
+                print("Delete lobby error: \(error)")
+            }
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return lobbies.count
     }

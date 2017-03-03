@@ -11,14 +11,24 @@ import UIKit
 class LobbyTableViewCell: UITableViewCell {
 
     static let cellHeight: CGFloat = 88
-    static let expandedCellheight: CGFloat = 155
+    static let expandedCellheight: CGFloat = 184
     static let reuseIdentifier = "lobbyTableViewCellReuseId"
     static let nibName = "LobbyTableViewCell"
     
+    //Labels
     @IBOutlet weak var lobbyName: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var openSlotsLabel: UILabel!
     @IBOutlet weak var currentPlayersLabel: UILabel!
+    @IBOutlet weak var wagerLabel: UILabel!
+    @IBOutlet weak var smokingLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    
+    //Buttons
+    @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var leaveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     weak var delegate: LobbyViewController?
     
@@ -26,9 +36,16 @@ class LobbyTableViewCell: UITableViewCell {
         didSet {
             if let lobby = lobby {
                 lobbyName.text = lobby.gameName
-                dateLabel.text = createDateLabelForLobby(lobby)
-                openSlotsLabel.text = createOpenSlotsLabelForLobby(lobby)
-                currentPlayersLabel.text = createPlayerListForLobby(lobby)
+                dateLabel.text = createDateLabel(lobby)
+                openSlotsLabel.text = createOpenSlotsLabel(lobby)
+                currentPlayersLabel.text = createPlayerList(lobby)
+                typeLabel.text = createTypeLabel(lobby)
+                wagerLabel.text = lobby.wager ? "YES" : "NO"
+                smokingLabel.text = lobby.smoking ? "YES" : "NO"
+                
+                joinButton.isHidden = lobby.playerIDs.contains(UserDefaultsHandler.uniqueID())
+                leaveButton.isHidden = !lobby.playerIDs.contains(UserDefaultsHandler.uniqueID())
+                deleteButton.isHidden = lobby.creatorID != UserDefaultsHandler.uniqueID()
             }
         }
     }
@@ -44,11 +61,11 @@ class LobbyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func createOpenSlotsLabelForLobby(_ lobby: Lobby) -> String {
+    func createOpenSlotsLabel(_ lobby: Lobby) -> String {
         return "\(lobby.playerList.count) / 4"
     }
     
-    func createPlayerListForLobby(_ lobby: Lobby) -> String {
+    func createPlayerList(_ lobby: Lobby) -> String {
         var string = ""
         
         for playerName in lobby.playerList {
@@ -62,15 +79,44 @@ class LobbyTableViewCell: UITableViewCell {
         return string
     }
     
-    func createDateLabelForLobby(_ lobby: Lobby) -> String {
+    func createDateLabel(_ lobby: Lobby) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d, h:mm a"
         return dateFormatter.string(from: lobby.startTime)
     }
     
+    func createTypeLabel(_ lobby: Lobby) -> String {
+        var type: String
+        
+        switch lobby.gameType {
+        case .川麻:
+            type = "川麻"
+            break;
+        case .普通:
+            type = "普通"
+            break;
+        }
+        
+        return type
+    }
+    
     @IBAction func joinButtonPressed(_ sender: Any) {
         if let delegate = self.delegate, let lobby = lobby {
             delegate.joinLobby(lobby)
+            delegate.selectedIndexPath = nil
+        }
+    }
+    
+    @IBAction func leaveButtonPressed(_ sender: Any) {
+        if let delegate = self.delegate, let lobby = lobby {
+            delegate.leaveLobby(lobby)
+            delegate.selectedIndexPath = nil
+        }
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        if let delegate = self.delegate, let lobby = lobby {
+            delegate.deleteLobby(lobby)
             delegate.selectedIndexPath = nil
         }
     }
