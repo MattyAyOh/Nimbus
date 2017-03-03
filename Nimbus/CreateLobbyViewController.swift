@@ -12,22 +12,15 @@ class CreateLobbyViewController: UIViewController  {
 
     @IBOutlet weak var gameNameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var gameTypeTextField: UITextField!
-    @IBOutlet weak var skillLevelTextField: UITextField!
     @IBOutlet weak var createLobbyButton: UIButton!
+    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var wagerSwitch: UISwitch!
+    @IBOutlet weak var smokingSwitch: UISwitch!
     
-    let typeArray = ["川麻", "普通"]
-    let skillArray = ["None", "Beginner", "Intermediate", "Expert"]
-    
-    var typePicker: PickerArrayController?
-    var skillPicker: PickerArrayController?
     let lobby = Lobby()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        skillLevelTextField.text = skillArray[0]
-        gameTypeTextField.text = typeArray[0]
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -80,48 +73,16 @@ class CreateLobbyViewController: UIViewController  {
         dateTextField.text = dateFormatter.string(from: sender.date)
         checkValidLobby()
     }
-    
-    @IBAction func editGameType(_ sender: UITextField) {
-        let numberPicker = UIPickerView()
-        
-        typePicker = PickerArrayController(typeArray, gameTypeTextField)
-        
-        numberPicker.delegate = typePicker
-        numberPicker.dataSource = typePicker
-        
-        if let currentText = gameTypeTextField.text,
-            let index = typeArray.index(of: currentText) {
-            numberPicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        
-        sender.inputView = numberPicker
-    }
-    
-     @IBAction func editSkillLevel(_ sender: UITextField) {
-        let skillLevelPickerView = UIPickerView()
-        
-        skillPicker = PickerArrayController(skillArray, skillLevelTextField)
-        
-        skillLevelPickerView.delegate = skillPicker
-        skillLevelPickerView.dataSource = skillPicker
-        
-        if let currentText = skillLevelTextField.text,
-            let index = skillArray.index(of: currentText) {
-            skillLevelPickerView.selectRow(index, inComponent: 0, animated: false)
-        }
-        
-        sender.inputView = skillLevelPickerView
-    }
-    
 
     @IBAction func createPressed(_ sender: Any) {
         lobby.gameName = gameNameTextField.text
         
-//        if let playerCount = playerCountTextField.text {
-//            if let playerCountInt = Int(playerCount) {
-//                lobby.maxPlayerSize = playerCountInt
-//            }
-//        }
+        if let type = GameType(rawValue: typeSegmentedControl.selectedSegmentIndex) {
+            lobby.gameType = type
+        }
+        
+        lobby.wager = wagerSwitch.isOn
+        lobby.smoking = smokingSwitch.isOn
         
         CloudHandler.shared.createLobby(lobby) { record, error in
             if let record = record {
