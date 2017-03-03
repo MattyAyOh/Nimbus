@@ -79,10 +79,10 @@
 			children = (
 				9B50769F1E58C4BF00E31334 /* CreateLobbyViewController.swift */,
 				9BA869E21E40281300A02357 /* LobbyViewController.swift */,
-				9BA869E61E40281300A02357 /* Main.storyboard */,
 				9B7A152F1E5D2F0F00ED8699 /* MyLobbiesViewController.swift */,
 				9B7A152D1E5D2EA200ED8699 /* AllLobbiesViewController.swift */,
 				9B5076A11E58F2BD00E31334 /* PickerArrayController.swift */,
+				9BA869E61E40281300A02357 /* Main.storyboard */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -94,6 +94,26 @@
 				9B5076971E5361A400E31334 /* LobbyTableViewCell.xib */,
 			);
 			name = TableViews;
+			sourceTree = "<group>";
+		};
+		9B527D521E6910C800430F2B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9B8ACF7D1E42AA200029931C /* Nimbus.entitlements */,
+				9BA869EE1E40281300A02357 /* Info.plist */,
+				9BA869E01E40281300A02357 /* AppDelegate.swift */,
+				9BA869E91E40281300A02357 /* Assets.xcassets */,
+				9BA869EB1E40281300A02357 /* LaunchScreen.storyboard */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		9B527D531E69113300430F2B /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				9B50769A1E539B6B00E31334 /* UserDefaultsHandler.swift */,
+			);
+			name = UserDefaults;
 			sourceTree = "<group>";
 		};
 		9BA869D41E40281300A02357 = {
@@ -116,15 +136,11 @@
 		9BA869DF1E40281300A02357 /* Nimbus */ = {
 			isa = PBXGroup;
 			children = (
-				9B8ACF7D1E42AA200029931C /* Nimbus.entitlements */,
-				9BA869EE1E40281300A02357 /* Info.plist */,
-				9BA869E01E40281300A02357 /* AppDelegate.swift */,
-				9B50769A1E539B6B00E31334 /* UserDefaultsHandler.swift */,
-				9BA869E91E40281300A02357 /* Assets.xcassets */,
+				9B527D521E6910C800430F2B /* Application */,
 				9B50769C1E539FB200E31334 /* Cloud */,
-				9BA869EB1E40281300A02357 /* LaunchScreen.storyboard */,
 				9B50769E1E539FC400E31334 /* TableViews */,
 				9B50769D1E539FBF00E31334 /* ViewControllers */,
+				9B527D531E69113300430F2B /* UserDefaults */,
 			);
 			path = Nimbus;
 			sourceTree = "<group>";

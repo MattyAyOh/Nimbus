@@ -26,10 +26,23 @@ class AllLobbiesViewController: LobbyViewController {
     var currentSort: LobbySorting = .DateFirst
     var previousSortIndex: Int = 0
     var sortPicker: PickerArrayController?
+    
+    //Filters
     var moneyFilter: Bool = false
     var smokingFilter: Bool = false
     var gameType1Filter: Bool = false
     var gameType2Filter: Bool = false
+    
+    //Filter Controls
+    @IBOutlet weak var moneyButton: UIButton!
+    @IBOutlet weak var smokingButton: UIButton!
+    @IBOutlet weak var type1Button: UIButton!
+    @IBOutlet weak var type2Button: UIButton!
+    
+    let orangeColor = #colorLiteral(red: 0.888741076, green: 0.5815969706, blue: 0.1769019365, alpha: 1)
+    let whiteColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    let transparentColor = #colorLiteral(red: 0.137254902, green: 0.137254902, blue: 0.137254902, alpha: 0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,17 +158,26 @@ class AllLobbiesViewController: LobbyViewController {
     @IBAction func moneyFilterPressed(_ sender: Any) {
         moneyFilter = !moneyFilter
         
+        updateControl(moneyButton, moneyFilter)
         refreshLobbies()
     }
     
     @IBAction func smokingFilterPressed(_ sender: Any) {
         smokingFilter = !smokingFilter
         
+        updateControl(smokingButton, smokingFilter)
         refreshLobbies()
     }
     
     @IBAction func type1Pressed(_ sender: Any) {
         gameType1Filter = !gameType1Filter
+        
+        updateControl(type1Button, gameType1Filter)
+        
+        if gameType1Filter {
+            gameType2Filter = !gameType1Filter
+            updateControl(type2Button, gameType2Filter)
+        }
         
         refreshLobbies()
     }
@@ -163,7 +185,19 @@ class AllLobbiesViewController: LobbyViewController {
     @IBAction func type2Pressed(_ sender: Any) {
         gameType2Filter = !gameType2Filter
         
+        updateControl(type2Button, gameType2Filter)
+        
+        if gameType2Filter {
+            gameType1Filter = !gameType2Filter
+            updateControl(type1Button, gameType1Filter)
+        }
+        
         refreshLobbies()
+    }
+    
+    func updateControl(_ button: UIButton, _ filterStatus: Bool) {
+        button.backgroundColor = filterStatus ? orangeColor : transparentColor
+        button.setTitleColor(filterStatus ? whiteColor: orangeColor, for: .normal)
     }
     
     func refreshLobbies() {
