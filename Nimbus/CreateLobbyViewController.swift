@@ -12,14 +12,14 @@ class CreateLobbyViewController: UIViewController  {
 
     @IBOutlet weak var gameNameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var playerCountTextField: UITextField!
+    @IBOutlet weak var gameTypeTextField: UITextField!
     @IBOutlet weak var skillLevelTextField: UITextField!
     @IBOutlet weak var createLobbyButton: UIButton!
     
-    let playerCountArray = ["2", "3", "4", "5", "6"]
+    let typeArray = ["川麻", "普通"]
     let skillArray = ["None", "Beginner", "Intermediate", "Expert"]
     
-    var playerCountPicker: PickerArrayController?
+    var typePicker: PickerArrayController?
     var skillPicker: PickerArrayController?
     let lobby = Lobby()
     
@@ -27,7 +27,7 @@ class CreateLobbyViewController: UIViewController  {
         super.viewDidLoad()
         
         skillLevelTextField.text = skillArray[0]
-        playerCountTextField.text = playerCountArray[2]
+        gameTypeTextField.text = typeArray[0]
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -81,16 +81,16 @@ class CreateLobbyViewController: UIViewController  {
         checkValidLobby()
     }
     
-    @IBAction func editPlayerCount(_ sender: UITextField) {
+    @IBAction func editGameType(_ sender: UITextField) {
         let numberPicker = UIPickerView()
         
-        playerCountPicker = PickerArrayController(playerCountArray, playerCountTextField)
+        typePicker = PickerArrayController(typeArray, gameTypeTextField)
         
-        numberPicker.delegate = playerCountPicker
-        numberPicker.dataSource = playerCountPicker
+        numberPicker.delegate = typePicker
+        numberPicker.dataSource = typePicker
         
-        if let currentText = playerCountTextField.text,
-            let index = playerCountArray.index(of: currentText) {
+        if let currentText = gameTypeTextField.text,
+            let index = typeArray.index(of: currentText) {
             numberPicker.selectRow(index, inComponent: 0, animated: false)
         }
         
@@ -117,11 +117,11 @@ class CreateLobbyViewController: UIViewController  {
     @IBAction func createPressed(_ sender: Any) {
         lobby.gameName = gameNameTextField.text
         
-        if let playerCount = playerCountTextField.text {
-            if let playerCountInt = Int(playerCount) {
-                lobby.maxPlayerSize = playerCountInt
-            }
-        }
+//        if let playerCount = playerCountTextField.text {
+//            if let playerCountInt = Int(playerCount) {
+//                lobby.maxPlayerSize = playerCountInt
+//            }
+//        }
         
         CloudHandler.shared.createLobby(lobby) { record, error in
             if let record = record {

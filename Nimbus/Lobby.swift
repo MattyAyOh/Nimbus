@@ -16,11 +16,19 @@ enum SkillLevel: Int {
         Expert
 }
 
+enum GameType: Int {
+    case 川麻 = 0,
+    普通
+}
+
 private var playerListKey = "Players"
-private var creatorIDKey = "Creator"
-private var playerSizeKey = "PlayerSize"
-private var startTimeKey = "StartTime"
-private var gameNameKey = "GameName"
+private var creatorIDKey =  "Creator"
+private var wagerKey =      "WagerKey"
+private var smokingKey =    "SmokingKey"
+private var playerIDsKey =  "PlayerIDs"
+private var startTimeKey =  "StartTime"
+private var gameNameKey =   "GameName"
+private var gameTypeKey =   "GameType"
 
 class Lobby: NSObject {
     //Properties
@@ -28,11 +36,12 @@ class Lobby: NSObject {
     var creatorID: String?
     var gameName: String?
     var playerList: [String] = []
-    var maxPlayerSize: Int = 0
+    var playerIDs: [String] = []
     var startTime: Date = Date()
     
     //Game Filters
-    var forMoney: Bool = false
+    var gameType: GameType = .川麻
+    var wager: Bool = false
     var smoking: Bool = false
     var skillLevel: SkillLevel = .None
     
@@ -40,6 +49,7 @@ class Lobby: NSObject {
         let userID = UserDefaultsHandler.uniqueID()
         
         self.creatorID = userID
+        self.playerIDs = [UserDefaultsHandler.uniqueID()]
         
         if let userNickname = UserDefaultsHandler.userNickname() {
             self.playerList = [userNickname]
@@ -51,12 +61,20 @@ class Lobby: NSObject {
             self.playerList = playerList
         }
         
+        if let playerIDs = record.value(forKey: playerIDsKey) as? [String] {
+            self.playerIDs = playerIDs
+        }
+        
         if let creatorID = record.value(forKey: creatorIDKey) as? String {
             self.creatorID = creatorID
         }
         
-        if let playerSize = record.value(forKey: playerSizeKey) as? Int {
-            self.maxPlayerSize = playerSize
+        if let wager = record.value(forKey: wagerKey) as? Bool {
+            self.wager = wager
+        }
+        
+        if let smoking = record.value(forKey: smokingKey) as? Bool {
+            self.smoking = smoking
         }
         
         if let startTime = record.value(forKey: startTimeKey) as? Date {
@@ -65,6 +83,12 @@ class Lobby: NSObject {
         
         if let gameName = record.value(forKey: gameNameKey) as? String {
             self.gameName = gameName
+        }
+        
+        if let gameTypeValue = record.value(forKey: gameTypeKey) as? Int {
+            if let gameType = GameType(rawValue: gameTypeValue) {
+                self.gameType = gameType
+            }
         }
         
         self.identifier = record.recordID
@@ -81,8 +105,11 @@ class Lobby: NSObject {
         record.setValue(playerList, forKey:playerListKey)
         record.setValue(startTime, forKey: startTimeKey)
         record.setValue(creatorID, forKey: creatorIDKey)
-        record.setValue(maxPlayerSize, forKey: playerSizeKey)
+        record.setValue(playerIDs, forKey: playerIDsKey)
+        record.setValue(wager, forKey: wagerKey)
         record.setValue(gameName, forKey: gameNameKey)
+        record.setValue(smoking, forKey: smokingKey)
+        record.setValue(gameType.rawValue, forKey: gameTypeKey)
         
         return record
     }

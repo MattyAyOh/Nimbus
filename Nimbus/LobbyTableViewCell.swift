@@ -45,7 +45,7 @@ class LobbyTableViewCell: UITableViewCell {
     }
     
     func createOpenSlotsLabelForLobby(_ lobby: Lobby) -> String {
-        return "\(lobby.playerList.count) / \(lobby.maxPlayerSize)"
+        return "\(lobby.playerList.count) / 4"
     }
     
     func createPlayerListForLobby(_ lobby: Lobby) -> String {
